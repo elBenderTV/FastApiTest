@@ -1,0 +1,32 @@
+[
+  {
+    "id": 0,
+    "nombre": "Harvey Specter",
+    "puesto": "Abogado Senior / Managing Partner"
+  },
+  {
+    "id": 1,
+    "nombre": "Mike Ross",
+    "puesto": "Asociado Junior / Abogado (sin título legal)"
+  },
+  {
+    "id": 2,
+    "nombre": "Louis Litt",
+    "puesto": "Director Financiero / Managing Partner"
+  },
+  {
+    "id": 3,
+    "nombre": "Donna Paulsen",
+    "puesto": "Secretaria Ejecutiva / COO"
+  },
+  {
+    "id": 4,
+    "nombre": "Rachel Zane",
+    "puesto": "Paralegal / Abogada"
+  },
+  {
+    "id": 5,
+    "nombre": "Jessica Pearson",
+    "puesto": "Managing Partner"
+  }
+]
