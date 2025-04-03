@@ -40,10 +40,10 @@ def ver_empleado(id: Optional[int] = None,nombre: Optional[str] = None):
                   "finded": True,
                   "empleado": empleado
               }
-
+            return {"finded": False}
 
 # Terminado
-@app.put('/crear', tags=['Empleados'])
+@app.post('/crear', tags=['Empleados'])
 def crear_empleado(nombre: str, puesto: str):
         nuevo_id = max(emp['id'] for emp in empleados) + 1 if empleados else 0
         nuevo_empleado={
@@ -55,6 +55,25 @@ def crear_empleado(nombre: str, puesto: str):
         guardar_empleados()
         return nuevo_empleado
 
+
+@app.put('/actualizar', tags=['Empleados'])
+def actualizar_empleado(id: int, nombre: Optional[str] = None, puesto: Optional[str] = None):
+    for index, emp in enumerate(empleados):
+        if emp['id'] == id:
+        # Actualizar solo los campos proporcionados
+            if nombre is not None:
+                empleados[index]['nombre'] = nombre
+            if puesto is not None:
+                empleados[index]['puesto'] = puesto
+
+            guardar_empleados()  # Guardar cambios en JSON
+
+            return {
+                "updated": True,
+                "empleado": empleados[index]
+            }
+
+    return {"updated": False}  # Si no encuentra el ID
 
 # Terminado
 @app.delete('/eliminar', tags=['Empleados'])
@@ -68,7 +87,7 @@ def eliminar_empleado(id: Optional[int] = None,nombre: Optional[str] = None):
                   "deleted": True,
                   "empleado": empleado_eliminado
               }
-          
+        return {"deleted": False}
 
 
 
