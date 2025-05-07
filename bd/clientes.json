@@ -1,0 +1,13 @@
+[
+    { "id": 1, "nombre": "TechCorp Solutions", "email": "contacto@techcorp.com" },
+    { "id": 2, "nombre": "RedShield Systems", "email": "info@redshield.com" },
+    { "id": 3, "nombre": "SecureData Inc.", "email": "ventas@securedata.com" },
+    { "id": 4, "nombre": "CyberNova Ltd.", "email": "soporte@cybernova.com" },
+    { "id": 5, "nombre": "Fortress IT", "email": "contact@fortressit.com" },
+    { "id": 6, "nombre": "ByteSafe Group", "email": "info@bytesafe.com" },
+    { "id": 7, "nombre": "ShieldNet Corp.", "email": "clientes@shieldnet.com" },
+    { "id": 8, "nombre": "NexLock Systems", "email": "sales@nexlock.com" },
+    { "id": 9, "nombre": "GuardianSoft", "email": "contacto@guardiansoft.com" },
+    { "id": 10, "nombre": "InfosecPro", "email": "admin@infosecpro.com" }
+  ]
+  

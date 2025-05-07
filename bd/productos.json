@@ -1,0 +1,13 @@
+[
+    { "id": 1, "nombre": "Firewall Empresarial", "precio": 4500.0 },
+    { "id": 2, "nombre": "Antivirus Corporativo", "precio": 1200.0 },
+    { "id": 3, "nombre": "Monitor de Red Avanzado", "precio": 3200.0 },
+    { "id": 4, "nombre": "Sistema Detección de Intrusos", "precio": 5500.0 },
+    { "id": 5, "nombre": "Backup en la Nube", "precio": 800.0 },
+    { "id": 6, "nombre": "Cifrado de Datos", "precio": 2100.0 },
+    { "id": 7, "nombre": "Análisis de Vulnerabilidades", "precio": 1500.0 },
+    { "id": 8, "nombre": "VPN Empresarial", "precio": 1800.0 },
+    { "id": 9, "nombre": "Protección Contra Ransomware", "precio": 3900.0 },
+    { "id": 10, "nombre": "Autenticación Multifactor", "precio": 900.0 }
+  ]
+  
