@@ -1,12 +1,17 @@
-class Empleado:
-    def __init__(self, id: int, nombre: str, puesto: str):
-        self.id = id
-        self.nombre = nombre
-        self.puesto = puesto
+from pydantic import BaseModel
+from typing import List
 
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "nombre": self.nombre,
-            "puesto": self.puesto
-        }
+class Cliente(BaseModel):
+    id: int
+    nombre: str
+    email: str
+
+class Producto(BaseModel):
+    id: int
+    nombre: str
+    precio: float
+
+class Pedido(BaseModel):
+    id: int
+    usuario_id: int
+    productos: List[int]  # IDs de productos
