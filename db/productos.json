@@ -1,0 +1,27 @@
+[
+  {
+      "id_producto": 1,
+      "nombre_producto": "Antivirus X",
+      "precio_producto": 199.99
+  },
+  {
+      "id_producto": 2,
+      "nombre_producto": "Firewall Pro",
+      "precio_producto": 299.99
+  },
+  {
+      "id_producto": 3,
+      "nombre_producto": "Cifrado Secure",
+      "precio_producto": 499.99
+  },
+  {
+      "id_producto": 4,
+      "nombre_producto": "VPN Plus",
+      "precio_producto": 99.99
+  },
+  {
+      "id_producto": 5,
+      "nombre_producto": "IDS Advanced",
+      "precio_producto": 249.99
+  }
+]

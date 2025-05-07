@@ -1,54 +1,54 @@
 import json
-import os
-from typing import TypeVar, Generic, List, Type
+from typing import Type, List, TypeVar
 from pydantic import BaseModel
 
-T = TypeVar("T", bound=BaseModel)
+T = TypeVar('T', bound=BaseModel)
 
-class GestorArchivos(Generic[T]):
-    def __init__(self, archivo: str, modelo: Type[T]):
-        self.archivo = archivo
+class GestorArchivos:
+    def __init__(self, ruta_archivo: str, modelo: Type[T]):
+        self.ruta_archivo = ruta_archivo
         self.modelo = modelo
         self.datos: List[T] = self._cargar()
 
     def _cargar(self) -> List[T]:
-        if not os.path.exists(self.archivo):
+        try:
+            with open(self.ruta_archivo, "r") as archivo:
+                datos = json.load(archivo)
+                print("Datos cargados desde JSON:", datos)
+            return [self.modelo(**item) for item in datos]
+        except FileNotFoundError:
             return []
-        with open(self.archivo, "r") as f:
-            try:
-                datos = json.load(f)
-                return [self.modelo(**item) for item in datos]
-            except json.JSONDecodeError:
-                return []
 
     def _guardar(self):
-        with open(self.archivo, "w") as f:
-            json.dump([d.model_dump() for d in self.datos], f, indent=2)
+        with open(self.ruta_archivo, "w") as archivo:
+            json.dump([item.dict() for item in self.datos], archivo, indent=2)
 
     def get_all(self) -> List[T]:
         return self.datos
 
     def get_by_id(self, id: int) -> T | None:
-        return next((d for d in self.datos if d.id == id), None)
+        for item in self.datos:
+            if item.id_cliente == id:  # Asumiendo que la propiedad id es siempre la clave primaria
+                return item
+        return None
 
-    def add(self, obj: T) -> T:
-        self.datos.append(obj)
+    def add(self, objeto: T) -> None:
+        self.datos.append(objeto)
         self._guardar()
-        return obj
 
-    def update(self, id: int, nuevos_datos: dict) -> T | None:
-        obj = self.get_by_id(id)
-        if obj:
-            datos_actualizados = obj.model_copy(update=nuevos_datos)
-            self.datos = [datos_actualizados if d.id == id else d for d in self.datos]
+    def update(self, id: int, datos: dict) -> T | None:
+        item = self.get_by_id(id)
+        if item:
+            for key, value in datos.items():
+                setattr(item, key, value)
             self._guardar()
-            return datos_actualizados
+            return item
         return None
 
-    def delete(self, id: int) -> T | None:
-        obj = self.get_by_id(id)
-        if obj:
-            self.datos = [d for d in self.datos if d.id != id]
+    def delete(self, id: int) -> bool:
+        item = self.get_by_id(id)
+        if item:
+            self.datos.remove(item)
             self._guardar()
-            return obj
-        return None
+            return True
+        return False
